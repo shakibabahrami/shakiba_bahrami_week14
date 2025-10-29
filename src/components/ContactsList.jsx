@@ -17,6 +17,8 @@ function ContactsList({
   setEmailInput,
   setPhoneInput,
   setContact,
+  isSearching,
+  setIsSearching,
 }) {
   // console.log(contacts,showCheckbox);
   return (
@@ -42,7 +44,6 @@ function ContactsList({
             setContact={setContact}
             changeHandler={changeHandler}
             contact={contact}
-
           />
         ))}
       </ul>

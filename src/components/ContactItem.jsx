@@ -48,7 +48,6 @@ function ContactItem({
       phone: contactToChange.phone,
     };
     setContact(editingContact);
-
   };
 
   return (

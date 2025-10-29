@@ -17,6 +17,11 @@ function App() {
   const [lastNameInput, setLastNameInput] = useState(contacts.lastName);
   const [emailInput, setEmailInput] = useState(contacts.email);
   const [phoneInput, setPhoneInput] = useState(contacts.phone);
+  const [isSearching, setIsSearching] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalContent, setModalContent] = useState(null);
+
   const [contact, setContact] = useState({
     name: "",
     lastName: "",
@@ -73,8 +78,9 @@ function App() {
             setLastNameInput={setLastNameInput}
             setEmailInput={setEmailInput}
             setPhoneInput={setPhoneInput}
-          setContact={setContact}
-
+            setContact={setContact}
+            isSearching={isSearching}
+            setIsSearching={setIsSearching}
           />
         ) : (
           <>
@@ -90,6 +96,8 @@ function App() {
         deleteButton={deleteButton}
         showCheckbox={showCheckbox}
         selectedArray={selectedArray}
+        isSearching={isSearching}
+        setIsSearching={setIsSearching}
       />
     </div>
   );

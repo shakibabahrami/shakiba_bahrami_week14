@@ -8,7 +8,7 @@
   flex-direction: row;
 }
 .leftSideContainer {
-  max-width: 900px;
+  /* max-width: 900px; */
   height: 35%;
   text-align: center;
   background-color: #83497b25;
@@ -34,6 +34,6 @@
 }
 @media (max-width: 1200px) {
   .container {
-    max-width: calc(100% - 80px);
+    max-width: calc(100% - 40px);
   }
 }
