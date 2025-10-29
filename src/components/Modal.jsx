@@ -1,17 +1,19 @@
-import React from 'react'
-// import Styles from "./Modal.module.css";
+import React from "react";
+import Styles from "./Modal.module.css";
 
-function Modal() {
-    if(!isOpen) return null;
+function Modal({ isOpen, title, onClose , children }) {
+  if (!isOpen) return null;
   return (
-    <div className="modal-backdrop">
-      <div className="modal">
+    <div className={Styles.modalBackdrop}>
+      <div className={Styles.modal}>
         <h3>{title}</h3>
-        <div className="modal-content">{children}</div>
-        <button onClick={onClose}>Close</button>
+        <div className={Styles.modalContent}>{children}</div>
+        <button onClick={onClose} className={Styles.closeButton}>
+          Close
+        </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Modal
+export default Modal;

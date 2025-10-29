@@ -9,13 +9,35 @@ function SidebarButtons({
   showCheckbox,
   selectedArray,
   isSearching,
-  setIsSearching
+  setIsSearching,
+  isModalOpen,
+  setIsModalOpen,
+  modalTitle,
+  setModalTitle,
+  modalContent,
+  setModalContent,
 }) {
   const [searchInputValue, setSearchInputValue] = useState("");
+
   const deleteSelected = () => {
-    let res = [];
-    res = contacts.filter((contact) => !selectedArray.includes(contact.id));
-    setContacts(res);
+    setModalTitle("Delete Selected Contacts?");
+    setModalContent(
+      <>
+        <p>Are you sure you want to delete ?</p>
+        <button
+          onClick={() => {
+            const res = contacts.filter(
+              (contact) => !selectedArray.includes(contact.id)
+            );
+            setContacts(res);
+          }}
+        >
+          Yes
+        </button>
+        <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+      </>
+    );
+    setIsModalOpen(true);
   };
 
   const searchContact = () => {
@@ -27,7 +49,6 @@ function SidebarButtons({
         (contact.name || contact.lastName || contact.phone || contact.email)
     );
     console.log(res);
-    
   };
 
   return (

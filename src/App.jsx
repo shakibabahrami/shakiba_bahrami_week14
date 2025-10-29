@@ -1,6 +1,7 @@
 import Contacts from "./components/Contacts";
 import ContactsList from "./components/ContactsList";
 import SidebarMenu from "./components/SidebarMenu";
+import Modal from "./components/Modal";
 
 import { useState } from "react";
 import Styles from "./components/App.module.css";
@@ -20,7 +21,7 @@ function App() {
   const [isSearching, setIsSearching] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
-  const [modalContent, setModalContent] = useState(null);
+  const [modalContent, setModalContent] = useState("");
 
   const [contact, setContact] = useState({
     name: "",
@@ -43,7 +44,16 @@ function App() {
 
   return (
     <div className={Styles.container}>
+      <Modal
+        isOpen={isModalOpen}
+        title={modalTitle}
+        onClose={() => setIsModalOpen(false)}
+      >
+        {modalContent}
+      </Modal>
       <div className={Styles.leftSideContainer}>
+        {/* <p>{isModalOpen ? "Modal is open ✅" : "Modal is closed ❌"}</p> */}
+
         <Contacts
           contacts={contacts}
           setContacts={setContacts}
@@ -98,6 +108,12 @@ function App() {
         selectedArray={selectedArray}
         isSearching={isSearching}
         setIsSearching={setIsSearching}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        modalTitle={modalTitle}
+        setModalTitle={setModalTitle}
+        modalContent={modalContent}
+        setModalContent={setModalContent}
       />
     </div>
   );

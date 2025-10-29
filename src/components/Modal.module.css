@@ -1,10 +1,11 @@
-.modal-backdrop {
+.modalBackdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 }
 
 .modal {
@@ -12,5 +13,25 @@
   padding: 2rem;
   border-radius: 1rem;
   min-width: 300px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  height: 220px;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  left: 435px;
+  top: 38%;
+justify-items: center;
+
+}
+.modalContent{
+  padding: 10px;
+}
+
+.closeButton{
+  width: 80%;
+  position: absolute;
+  bottom: 10px;
+}
+button{
+  margin: 5px;
 }
