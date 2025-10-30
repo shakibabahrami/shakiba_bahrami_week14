@@ -46,7 +46,22 @@ function Contacts({
     },
   ];
 
+  const validation = () => {
+    if (!contact.name.trim()) return "Name is required!!";
+    if (!contact.lastName.trim()) return "Last Name is required!!";
+    if (!contact.email.includes("@")) return "Invalid Email!!";
+    if (contact.phone.length < 11) return "Phone Number must be 11 digits!!";
+    return "";
+  };
+
   const addHandler = () => {
+    const error = validation();
+    if (error) {
+      setAlert(error);
+      setAlertType(false);
+      return;
+    }
+
     if (
       !contact.name ||
       !contact.lastName ||
@@ -60,7 +75,6 @@ function Contacts({
       }, 3000);
       return;
     }
-    // setAlert("");
     const newContact = { ...contact, id: v4() };
     setContacts((contacts) => [...contacts, newContact]);
     setContact({
@@ -70,9 +84,17 @@ function Contacts({
       email: "",
       phone: "",
     });
+    setAlert("contact added successfully!!");
+    setAlertType(true);
+    setTimeout(() => {
+      setAlert("");
+    }, 3000);
   };
 
   const changeEditHandler = (event) => {
+
+    
+
     const { name, value } = event.target;
     setContact((contact) => ({ ...contact, [name]: value }));
     if (name === "name") setNameInput(value);
@@ -81,6 +103,14 @@ function Contacts({
     if (name === "phone") setPhoneInput(value);
   };
   const saveEditedHandler = () => {
+    
+    const error = validation();
+    if (error) {
+      setAlert(error);
+      setAlertType(false);
+      return;
+    }
+
     const editedContacts = contacts.map((c) =>
       c.id === contact.id ? contact : c
     );
