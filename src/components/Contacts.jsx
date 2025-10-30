@@ -9,6 +9,8 @@ function Contacts({
   changeHandler,
   alert,
   setAlert,
+  alertType,
+  setAlertType,
   contact,
   setContact,
   editing,
@@ -52,9 +54,13 @@ function Contacts({
       !contact.phone
     ) {
       setAlert("Please Enter Valid Data!");
+      setAlertType(false);
+      setTimeout(() => {
+        setAlert("");
+      }, 3000);
       return;
     }
-    setAlert("");
+    // setAlert("");
     const newContact = { ...contact, id: v4() };
     setContacts((contacts) => [...contacts, newContact]);
     setContact({
@@ -85,12 +91,17 @@ function Contacts({
     setPhoneInput("");
     setEditing(false);
     setContact({
-  id: "",
-  name: "",
-  lastName: "",
-  email: "",
-  phone: "",
-});
+      id: "",
+      name: "",
+      lastName: "",
+      email: "",
+      phone: "",
+    });
+    setAlert("contact edited successfully!");
+    setAlertType(true);
+    setTimeout(() => {
+      setAlert("");
+    }, 3000);
   };
   return (
     <>
@@ -115,7 +126,13 @@ function Contacts({
           )}
         </div>
       </div>
-      <div className={Styles.alert}>{alert && <p>{alert}</p>}</div>
+      <div
+        className={`${Styles.alert} ${
+          alertType ? Styles.successAlert : Styles.failedAlert
+        }`}
+      >
+        {alert && <p>{alert}</p>}
+      </div>
     </>
   );
 }

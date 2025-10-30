@@ -17,6 +17,11 @@
   border-radius: 8px;
   color: #fff;
   text-align: center;
+}
+.successAlert{
+  background-color: #75ff81;
+}
+.failedAlert{
   background-color: #ff7575;
 }
 .input {

@@ -14,6 +14,7 @@ function App() {
   const [showCheckbox, setShowCheckbox] = useState(false);
   const [selectedArray, setSelectedArray] = useState([]);
   const [alert, setAlert] = useState("");
+  const [alertType, setAlertType] = useState(true);
   const [nameInput, setNameInput] = useState(contacts.name);
   const [lastNameInput, setLastNameInput] = useState(contacts.lastName);
   const [emailInput, setEmailInput] = useState(contacts.email);
@@ -60,6 +61,8 @@ function App() {
           changeHandler={changeHandler}
           alert={alert}
           setAlert={setAlert}
+          alertType={alertType}
+          setAlertType={setAlertType}
           contact={contact}
           setContact={setContact}
           editing={editing}
