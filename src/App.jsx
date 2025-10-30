@@ -94,6 +94,15 @@ function App() {
             setContact={setContact}
             isSearching={isSearching}
             setIsSearching={setIsSearching}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            modalTitle={modalTitle}
+            setModalTitle={setModalTitle}
+            modalContent={modalContent}
+            setModalContent={setModalContent}
+            setAlert={setAlert}
+            alertType={alertType}
+            setAlertType={setAlertType}
           />
         ) : (
           <>

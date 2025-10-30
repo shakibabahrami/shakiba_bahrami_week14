@@ -18,6 +18,16 @@ function ContactItem({
   setContact,
   changeHandler,
   contact,
+  isModalOpen,
+  setIsModalOpen,
+  modalTitle,
+  setModalTitle,
+  modalContent,
+  setModalContent,
+  alert,
+  setAlert,
+  alertType,
+  setAlertType,
 }) {
   const checkboxHandler = (id) => {
     selectedArray.findIndex((item) => item === id) === -1
@@ -28,24 +38,30 @@ function ContactItem({
   };
 
   const deleteHandler = (id) => {
-    // setModalTitle("Warning!!!");
-    // setModalContent(
-    //   <>
-    //     <p>Are you sure you want to delete this contact?</p>
-    //     <button
-    //       onClick={() => {
-    //         const newContacts = contacts.filter((contact) => contact.id !== id);
-    //         setContacts(newContacts);
-    //       }}
-    //     >
-    //       Yes
-    //     </button>
-    //     <button onClick={() => setIsModalOpen(false)}>Cancel</button>
-    //   </>
-    // );
-    // setIsModalOpen(true);
-    const newContacts = contacts.filter((contact) => contact.id !== id);
-    setContacts(newContacts);
+    setModalTitle("Warning!!!");
+    setModalContent(
+      <>
+        <p>Are you sure you want to delete this contact?</p>
+        <button
+          onClick={() => {
+            const newContacts = contacts.filter((contact) => contact.id !== id);
+            setContacts(newContacts);
+            setIsModalOpen(false);
+            setAlert("contact deleted");
+            setAlertType(true);
+            setTimeout(() => {
+              setAlert("");
+            }, 3000);
+          }}
+        >
+          Yes
+        </button>
+        {/* <button onClick={() => setIsModalOpen(false)}>Cancel</button> */}
+      </>
+    );
+    setIsModalOpen(true);
+    // const newContacts = contacts.filter((contact) => contact.id !== id);
+    // setContacts(newContacts);
   };
 
   const editHandler = (id) => {

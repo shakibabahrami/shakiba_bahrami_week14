@@ -19,6 +19,16 @@ function ContactsList({
   setContact,
   isSearching,
   setIsSearching,
+  isModalOpen,
+  setIsModalOpen,
+  modalTitle,
+  setModalTitle,
+  modalContent,
+  setModalContent,
+  alert,
+  setAlert,
+  alertType,
+  setAlertType,
 }) {
   // console.log(contacts,showCheckbox);
   return (
@@ -44,6 +54,15 @@ function ContactsList({
             setContact={setContact}
             changeHandler={changeHandler}
             contact={contact}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            modalTitle={modalTitle}
+            setModalTitle={setModalTitle}
+            modalContent={modalContent}
+            setModalContent={setModalContent}
+            setAlert={setAlert}
+            alertType={alertType}
+            setAlertType={setAlertType}
           />
         ))}
       </ul>
