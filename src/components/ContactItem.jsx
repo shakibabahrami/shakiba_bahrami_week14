@@ -38,8 +38,6 @@ function ContactItem({
     setEditing(true);
     console.log("ed",editing);
 
-    // const contactToChange = contacts.filter((contact) => contact.id === id)[0];
-    //     const editingContact = contacts.find((contact) => contact.id === id);
     const contactToChange = contacts.find((contact) => contact.id === id);
     if (!contactToChange) return;
     const { name, lastName, email, phone } = contactToChange;
@@ -50,6 +48,17 @@ function ContactItem({
     console.log(contactToChange);
     setContact({...contactToChange});
   };
+ // const editHandler = () => {
+  //   const contactToEdit = contacts.find((c) => c.id === id);
+  //   if (!contactToEdit) return;
+  //   setEditing(true);
+  //   setContact(contactToEdit);
+  //   const { name, lastName, email, phone } = contactToEdit;
+  //   setNameInput(name);
+  //   setLastNameInput(lastName);
+  //   setEmailInput(email);
+  //   setPhoneInput(phone);
+  // };
 
   // const editHandler = (id) => {
   //   console.log(id);
