@@ -66,26 +66,57 @@ function Contacts({
     });
   };
 
-  const saveEditedHandler = () => {};
-
   const editHandler = (event) => {
-    console.log(contact);
-    setNameInput(contact.name);
-    setLastNameInput(contact.lastName);
-    setEmailInput(contact.email);
-    setPhoneInput(contact.phone);
-    const newContact = { nameInput, lastNameInput, emailInput, phoneInput };
-    const name = event.target.name;
-    const value = event.target.value;
-    setContact((newContact) => ({ ...newContact, [name]: value }));
+    // console.log(contact);
+    // console.log("saaaaaaaaaaaaave");
+
+    // setNameInput(contact.name);
+    // setLastNameInput(contact.lastName);
+    // setEmailInput(contact.email);
+    // setPhoneInput(contact.phone);
+    // const newContact = { nameInput, lastNameInput, emailInput, phoneInput };
+    // const name = event.target.name;
+    // const value = event.target.value;
+    // setContact((newContact) => ({ ...newContact, [name]: value }));
+    const contactToEdit = contacts.find((c) => c.id === id);
+    if (!contactToEdit) return;
+
+    setEditing(true);
+    setContact(contactToEdit);
+
+    const { name, lastName, email, phone } = contactToEdit;
+    setNameInput(name);
+    setLastNameInput(lastName);
+    setEmailInput(email);
+    setPhoneInput(phone);
   };
 
+  const changeEditHandler = (event) => {
+    const { name, value } = event.target;
+    setContact((contact) => ({ ...contact, [name]: value }));
+    if (name === "name") setNameInput(value);
+    if (name === "lastName") setLastNameInput(value);
+    if (name === "email") setEmailInput(value);
+    if (name === "phone") setPhoneInput(value);
+  };
+  const saveEditedHandler = () => {
+    console.log("saaaaaaaaaaaaave");
+    const editedContacts = contacts.map((c) =>
+      c.id === contact.id ? contact : c
+    );
+    setContacts(editedContacts);
+    setEditing(false);
+    setNameInput("");
+    setLastNameInput("");
+    setEmailInput("");
+    setPhoneInput("");
+  };
   return (
     <>
       <div className={Styles.container}>
         <h3 className={Styles.header}>Add New Contact</h3>
         <div className={Styles.inputs}>
-          {!editing
+          {/* {!editing
             ? inputs.map((input, index) => (
                 <input
                   className={Styles.input}
@@ -94,7 +125,7 @@ function Contacts({
                   placeholder={input.placeholder}
                   name={input.name}
                   value={contact[input.name]}
-                  onChange={changeHandler}
+                  onChange={changeEditHandler}
                 />
               ))
             : inputs.map((input, index) => (
@@ -107,7 +138,18 @@ function Contacts({
                   value={input.class}
                   onChange={editHandler}
                 />
-              ))}
+              ))} */}
+          {inputs.map((input, index) => (
+            <input
+              key={index}
+              className={Styles.input}
+              type={input.type}
+              name={input.name}
+              placeholder={input.placeholder}
+              value={contact[input.name]}
+              onChange={changeEditHandler}
+            />
+          ))}
           {editing ? (
             <button onClick={saveEditedHandler}>Edit</button>
           ) : (

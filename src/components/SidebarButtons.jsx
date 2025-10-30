@@ -40,6 +40,8 @@ function SidebarButtons({
     setIsModalOpen(true);
   };
 
+  
+
   const searchContact = () => {
     console.log(searchInputValue);
     console.log(contacts);

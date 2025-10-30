@@ -33,22 +33,38 @@ function ContactItem({
   };
 
   const editHandler = (id) => {
-    setEditing(id);
-    const contactToChange = contacts.filter((contact) => contact.id === id)[0];
-    setNameInput(contactToChange.name);
-    setLastNameInput(contactToChange.lastName);
-    setEmailInput(contactToChange.email);
-    setPhoneInput(contactToChange.phone);
+    console.log("id",id);
+    console.log("ed",editing);
+    setEditing(true);
+    console.log("ed",editing);
 
-    const editingContact = {
-      id: contactToChange.id,
-      name: contactToChange.name,
-      lastName: contactToChange.lastName,
-      email: contactToChange.email,
-      phone: contactToChange.phone,
-    };
-    setContact(editingContact);
+    // const contactToChange = contacts.filter((contact) => contact.id === id)[0];
+    //     const editingContact = contacts.find((contact) => contact.id === id);
+    const contactToChange = contacts.find((contact) => contact.id === id);
+    if (!contactToChange) return;
+    const { name, lastName, email, phone } = contactToChange;
+    setNameInput(name);
+    setLastNameInput(lastName);
+    setEmailInput(email);
+    setPhoneInput(phone);
+    console.log(contactToChange);
+    setContact({...contactToChange});
   };
+
+  // const editHandler = (id) => {
+  //   console.log(id);
+  //   setEditing(true);
+  //   {
+  //     const editingContact = contacts.find((contact) => contact.id === id);
+  //     setContact({
+  //       name: editingContact.name,
+  //       lastName: editingContact.lastName,
+  //       email: editingContact.email,
+  //       phone: editingContact.phone,
+  //       id: editingContact.id,
+  //     });
+  //   }
+  // };
 
   return (
     <li key={id}>
