@@ -28,15 +28,31 @@ function ContactItem({
   };
 
   const deleteHandler = (id) => {
+    // setModalTitle("Warning!!!");
+    // setModalContent(
+    //   <>
+    //     <p>Are you sure you want to delete this contact?</p>
+    //     <button
+    //       onClick={() => {
+    //         const newContacts = contacts.filter((contact) => contact.id !== id);
+    //         setContacts(newContacts);
+    //       }}
+    //     >
+    //       Yes
+    //     </button>
+    //     <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+    //   </>
+    // );
+    // setIsModalOpen(true);
     const newContacts = contacts.filter((contact) => contact.id !== id);
     setContacts(newContacts);
   };
 
   const editHandler = (id) => {
-    console.log("id",id);
-    console.log("ed",editing);
+    console.log("id", id);
+    console.log("ed", editing);
     setEditing(true);
-    console.log("ed",editing);
+    console.log("ed", editing);
 
     const contactToChange = contacts.find((contact) => contact.id === id);
     if (!contactToChange) return;
@@ -46,9 +62,9 @@ function ContactItem({
     setEmailInput(email);
     setPhoneInput(phone);
     console.log(contactToChange);
-    setContact({...contactToChange});
+    setContact({ ...contactToChange });
   };
- // const editHandler = () => {
+  // const editHandler = () => {
   //   const contactToEdit = contacts.find((c) => c.id === id);
   //   if (!contactToEdit) return;
   //   setEditing(true);

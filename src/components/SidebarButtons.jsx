@@ -20,7 +20,7 @@ function SidebarButtons({
   const [searchInputValue, setSearchInputValue] = useState("");
 
   const deleteSelected = () => {
-    setModalTitle("Delete Selected Contacts?");
+    setModalTitle("Warning!!!");
     setModalContent(
       <>
         <p>Are you sure you want to delete ?</p>
@@ -40,17 +40,30 @@ function SidebarButtons({
     setIsModalOpen(true);
   };
 
-  
-
   const searchContact = () => {
-    console.log(searchInputValue);
-    console.log(contacts);
     let res = contacts.find(
       (contact) =>
-        searchInputValue ==
-        (contact.name || contact.lastName || contact.phone || contact.email)
+        searchInputValue === contact.name ||
+        searchInputValue === contact.lastName ||
+        searchInputValue === contact.phone ||
+        searchInputValue === contact.email
     );
-    console.log(res);
+    if (res) {
+      console.log(res.phone);
+
+      setModalTitle("here you are :)");
+      setModalContent(
+        <>
+          <p className={Styles.founded}>{`${res.name}
+          
+        ${res.lastName}
+        ${res.email}
+        ${res.phone}`}</p>
+        </>
+      );
+      setIsModalOpen(true);
+    }
+    setSearchInputValue("");
   };
 
   return (
