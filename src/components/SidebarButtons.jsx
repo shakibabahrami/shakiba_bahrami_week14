@@ -1,20 +1,14 @@
 import React, { useState } from "react";
 
 import Styles from "./SidebarButtons.module.css";
-// const searchInputValue=0,setSearchInputValue=0;
 function SidebarButtons({
   contacts,
   setContacts,
   deleteButton,
   showCheckbox,
   selectedArray,
-  isSearching,
-  setIsSearching,
-  isModalOpen,
   setIsModalOpen,
-  modalTitle,
   setModalTitle,
-  modalContent,
   setModalContent,
   setShowCheckbox,
 }) {
