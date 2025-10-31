@@ -13,6 +13,7 @@ function SidebarMenu({
   setModalTitle,
   modalContent,
   setModalContent,
+  setShowCheckbox,
 }) {
   return (
     <div className={Styles.container}>
@@ -30,6 +31,7 @@ function SidebarMenu({
         setModalTitle={setModalTitle}
         modalContent={modalContent}
         setModalContent={setModalContent}
+        setShowCheckbox={setShowCheckbox}
       />
     </div>
   );

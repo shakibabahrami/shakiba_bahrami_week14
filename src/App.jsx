@@ -35,6 +35,11 @@ function App() {
 
   const deleteButton = () => {
     setShowCheckbox((value) => !value);
+    setAlert("please select contacts that you want to delete together");
+    setAlertType(true);
+    setTimeout(() => {
+      setAlert("");
+    }, 3000);
   };
 
   const changeHandler = (event) => {
@@ -126,6 +131,7 @@ function App() {
         setModalTitle={setModalTitle}
         modalContent={modalContent}
         setModalContent={setModalContent}
+        setShowCheckbox={setShowCheckbox}
       />
     </div>
   );

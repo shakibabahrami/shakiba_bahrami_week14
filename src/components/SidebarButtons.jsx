@@ -16,6 +16,7 @@ function SidebarButtons({
   setModalTitle,
   modalContent,
   setModalContent,
+  setShowCheckbox,
 }) {
   const [searchInputValue, setSearchInputValue] = useState("");
 
@@ -30,6 +31,8 @@ function SidebarButtons({
               (contact) => !selectedArray.includes(contact.id)
             );
             setContacts(res);
+            setIsModalOpen(false);
+            setShowCheckbox(false);
           }}
         >
           Yes
