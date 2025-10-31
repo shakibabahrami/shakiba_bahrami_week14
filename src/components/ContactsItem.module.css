@@ -17,3 +17,11 @@
 .edit:hover {
   cursor: pointer;
 }
+.modalText {
+  font-size: 1.2rem;
+  color: #83497b;
+  text-align: center;
+}
+.deleteButton {
+  margin-left: 80px;
+}

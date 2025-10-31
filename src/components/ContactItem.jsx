@@ -41,8 +41,11 @@ function ContactItem({
     setModalTitle("Warning!!!");
     setModalContent(
       <>
-        <p>Are you sure you want to delete this contact?</p>
+        <p className={Styles.modalText}>
+          Are you sure you want to delete this contact?
+        </p>
         <button
+          className={Styles.deleteButton}
           onClick={() => {
             const newContacts = contacts.filter((contact) => contact.id !== id);
             setContacts(newContacts);
